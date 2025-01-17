@@ -39,18 +39,26 @@ public:
         years[year].months[month].days[day].quarters[quarter].dataPoints.push_back(dataPoint);
     }
 
-    void traverseAndPrint() const {
+    double calculateSum(const std::string& start, const std::string& end, char type) const {
+        double sum = 0.0;
         for (const auto& [year, yearNode] : years) {
             for (const auto& [month, monthNode] : yearNode.months) {
                 for (const auto& [day, dayNode] : monthNode.days) {
                     for (const auto& [quarter, quarterNode] : dayNode.quarters) {
                         for (const auto& dataPoint : quarterNode.dataPoints) {
-                            dataPoint->print();
+                            if (dataPoint->getDatetime() >= start && dataPoint->getDatetime() <= end) {
+                                if (type == 'A') sum += dataPoint->getSelfConsumption();
+                                if (type == 'E') sum += dataPoint->getExportEnergy();
+                                if (type == 'I') sum += dataPoint->getImportEnergy();
+                                if (type == 'C') sum += dataPoint->getConsumption();
+                                if (type == 'P') sum += dataPoint->getProduction();
+                            }
                         }
                     }
                 }
             }
         }
+        return sum;
     }
 };
 
