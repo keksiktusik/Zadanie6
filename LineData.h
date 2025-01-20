@@ -30,31 +30,31 @@ using namespace std;
   */
 class LineData {
 public:
-    // Konstruktor przyjmuj¹cy liniê tekstu i rozdzielaj¹cy dane w tej linii na poszczególne pola
+    /// Konstruktor przyjmuj¹cy liniê tekstu i rozdzielaj¹cy dane w tej linii na poszczególne pola
     LineData(const string& line);
 
-    // Konstruktor przyjmuj¹cy obiekt ifstream i odczytuj¹cy dane z pliku
+    /// Konstruktor przyjmuj¹cy obiekt ifstream i odczytuj¹cy dane z pliku
     LineData(ifstream& in);
 
-    // Funkcja do wypisania wszystkich danych na standardowe wyjœcie
+    /// Metoda do wypisania wszystkich danych na standardowe wyjœcie
     void print() const;
 
-    // Funkcja do wypisania tylko wartoœci danych (np. autokonsumpcja, eksport itp.)
+    /// Metoda do wypisania tylko wartoœci danych (np. autokonsumpcja, eksport itp.)
     void printData() const;
 
-    // Funkcja, która zwraca dane jako jeden ci¹g tekstowy
+    /// Metoda, która zwraca dane jako jeden ci¹g tekstowy
     string printString();
 
-    // Funkcja do zapisania obiektu do pliku
+    /// Metoda do zapisania obiektu do pliku
     void serialize(ofstream& out) const;
 
-    // Funkcja do odczytania obiektu z pliku
+    /// Metoda do odczytania obiektu z pliku
     void deserialize(ifstream& in);
 
-    // Funkcja do zwrócenia daty
+    /// Metoda do zwrócenia daty
     string getDate() const { return date; }
 
-    // Funkcje do zwracania poszczególnych danych z linii
+    /// Funkcje do zwracania poszczególnych danych z linii
     float getAutokonsumpcja() const { return autokonsumpcja; }
     float getEksport() const { return eksport; }
     float getImport() const { return import; }
@@ -62,15 +62,19 @@ public:
     float getProdukcja() const { return produkcja; }
 
 private:
-    // Zmienna przechowuj¹ca datê (np. "2025-01-01")
+    /// Zmienna przechowuj¹ca datê (np. "2025-01-01")
     string date;
 
-    // Zmienne przechowuj¹ce ró¿ne wartoœci w watttach
-    float autokonsumpcja;  // Autokonsumpcja w watach
-    float eksport;         // Eksport energii w watach
-    float import;          // Import energii w watach
-    float pobor;           // Pobór energii w watach
-    float produkcja;       // Produkcja energii w watach
+    /// Autokonsumpcja w watach
+    float autokonsumpcja; 
+    /// Eksport energii w watach
+    float eksport;         
+    /// Import energii w watach
+    float import;          
+    /// Pobór energii w watach
+    float pobor;           
+    /// Produkcja energii w watach
+    float produkcja;       
 };
 
 #endif // LINEDATA_H
